@@ -1,0 +1,7 @@
+<footer>
+    <section class="cyberpunk black">
+        {{- if isset .Site.Params "footertext" -}}
+            <p class="subtitle">{{ .Site.Params.footertext | markdownify }}</p>
+        {{ end }}
+    </section>
+</footer>

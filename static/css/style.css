@@ -1,0 +1,89 @@
+.avatar-image {
+    width: 200px;
+}
+
+.navigation ul,
+.social ul {
+    list-style: none;
+    padding: 0;
+}
+
+.navigation li,
+.social li {
+    display: inline-block;
+}
+
+.social li {
+    margin-right: 20px;
+}
+
+.subtitle {
+    font-size: 1.3em;
+}
+
+.navigation a:link {
+    text-decoration: none;
+}
+
+body {
+    font-size: 18pt;
+}
+
+.cyberpunk-padding {
+    padding: 10px 60px;
+}
+
+.social a {
+    color: black;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+.box {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+.box header {
+    flex: 0 1 auto;
+}
+
+.box main {
+    flex: 1 1 auto;
+    margin-bottom: 60px;
+}
+
+.box footer {
+    flex: 0 1 160px;
+}
+
+.row {
+    margin-right: 0;
+}
+
+footer .cyberpunk::after {
+    content: none;
+}
+
+.post .date {
+    font-weight: bold;
+    color: #136377;
+}
+
+.post {
+    margin-bottom: 60px;
+}
+
+footer {
+    font-size: 16pt;
+    text-align: right;
+}
+
+footer section {
+    padding: 60px;
+}

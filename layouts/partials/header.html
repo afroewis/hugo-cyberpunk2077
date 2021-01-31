@@ -1,0 +1,63 @@
+<header>
+    <section class="cyberpunk-padding">
+        <div class="row">
+            {{ if .Site.Params.Avatar }}
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a href="{{ .Site.BaseURL }}">
+                                <img class="cyberpunk avatar-image" src="{{ relURL .Site.Params.Avatar }}" alt="{{ .Site.Title }}">
+                            </a>
+                        </div>
+
+                        <div class="col-md-8">
+                            <div>
+                                {{- if .IsHome -}}
+                                <h1 class="cyberpunk glitched"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
+                                {{- else -}}
+                                <h1 class="cyberpunk glitched"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
+                                {{- end -}}
+                            </div>
+
+                            {{- if isset .Site.Params "subtitle" -}}
+                            <p class="subtitle">{{ .Site.Params.Subtitle | markdownify }}</p>
+
+                            {{- end -}}
+                            <nav class="social">
+                                <ul>
+                                    {{- range $index, $key := .Site.Params.Social -}}
+                                    {{- if $key.url }}
+                                    <li><a href="{{ relURL $key.url }}"><i title="{{ $key.name }}" class="fa fa-2x {{ $key.icon }}"></i></a></li>
+                                    {{- else -}}
+                                    <li><a href="{{ $key.cmd }}"><i title="{{ $key.name }}" class="fa fa-2x {{ $key.icon }}"></i></a></li>
+                                    {{- end -}}
+                                    {{- end -}}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            {{ end }}
+
+            {{ if .Site.Params.Avatar }}
+                <sec class="col-md-7 navigation-container">
+            {{ else }}
+                <div>
+            {{ end }}
+
+            {{ if isset .Site.Menus "main" }}
+                <div>
+                    <nav class="navigation">
+                        <ul>
+                            {{ range .Site.Menus.main }}
+                                <li>
+                                    <a class="cyberpunk2077" href="{{ .URL }}">{{ .Name }}</a>
+                                </li>
+                            {{ end }}
+                        </ul>
+                    </nav>
+                </div>
+            {{ end }}
+        </div>
+    </section>
+</header>

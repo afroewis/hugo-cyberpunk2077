@@ -1,0 +1,67 @@
+{{ define "main" -}}
+{{ if eq .Site.Params.homepage true }}
+{{ with .Site.GetPage "/homepage.md" }}
+    <div>
+        {{ if isset .Params "image" }}
+                <img src="{{ relURL .Params.image }}" {{ if isset .Params "imagetext" }}alt="{{ .Params.imagetext }}"{{ end }}>
+        {{ end }}
+            <div>
+                {{ if eq .Site.Params.listAuthor true}}
+                    {{ if isset .Params "author" }}
+                        <p>
+                            {{ if isset .Params "authorlink" }}
+                            {{ i18n "authorpretext" }} <a href="{{ relURL .Params.authorlink }}">{{ .Params.author }}</a>
+                            {{ else }}
+                            {{ i18n "authorpretext" }} {{ .Params.author }}
+                            {{ end }}
+                        </p>
+                    {{ end }}
+                {{ end }}
+            </div>
+        <div>
+            {{ if ne .Date.Year 1 }}
+                <div class="meta">
+                    {{ if not .Params.nodate }}
+                    <div class="date">
+                        <span class="day">{{ dateFormat "02" .Date }}</span>
+                        <span class="rest">{{ if $.Site.Data.month }}{{ index $.Site.Data.month (printf "%d" .Date.Month) }} {{ .Date.Year }}{{ else }}{{ dateFormat "Jan 2006" .Date }}{{ end }}</span>
+                    </div>
+                    {{ end }}
+                </div>
+            {{ end }}
+            <h1 class="title">{{ .Title }}</h1>
+        </div>
+        <div>
+            {{ .Content }}
+        </div>
+    </div>
+{{ end }}
+{{ else }}
+<section class="cyberpunk black">
+    <div class="recent-posts">
+        {{ $pages := where .Site.RegularPages "Section" "in" .Site.Params.mainSections }}
+        {{ $paginator := .Paginate (where $pages "Params.hidden" "ne" true) }}
+        {{ range $paginator.Pages }}
+        <div class="post">
+            <h1 class="cyberpunk"><a href="{{ .RelPermalink }}">{{.Title}}{{ if .Draft }}<sup>DRAFT</sup>{{ end }}</a></h1>
+            <span>
+                {{ if isset .Params "description" }}
+                    {{ .Description }}
+                {{ else if gt (len .Plain) 120 }}
+                    {{ slicestr .Plain 0 120 | htmlUnescape }}...
+                {{ else }}
+                    {{ .Plain | htmlUnescape }}
+                {{ end }}
+            </span>
+
+            <div class="date">
+<!--                <span class="day">{{ dateFormat "02" .Date }}</span>-->
+                <span class="rest">{{ if $.Site.Data.month }}{{ index $.Site.Data.month (printf "%d" .Date.Month) }} {{ .Date.Year }}{{ else }}{{ dateFormat "Jan 2006" .Date }}{{ end }}</span>
+            </div>
+        </div>
+        {{ end }}
+        {{ partial "paginator.html" . }}
+    </div>
+</section>
+{{ end }}
+{{ end }}
