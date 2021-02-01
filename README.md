@@ -4,8 +4,8 @@ Based on the Cyberpunk 2077 CSS styles from: https://github.com/gwannon/Cyberpun
 
 ## Features
 
-### Cyberpunk-images
-Use the `img` shortcode to display a cyberpunk border around the image.
+### Cyberpunk images
+Use the `img` shortcode to display a cyberpunk frame around the image.
 
 Example: 
 
