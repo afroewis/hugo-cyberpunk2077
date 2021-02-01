@@ -1,13 +1,14 @@
 <header>
     <section class="cyberpunk-padding">
         <div class="row">
-            {{ if .Site.Params.Avatar }}
                 <div class="col-md-5">
                     <div class="row">
                         <div class="col-md-4">
-                            <a href="{{ .Site.BaseURL }}">
-                                <img class="cyberpunk avatar-image" src="{{ relURL .Site.Params.Avatar }}" alt="{{ .Site.Title }}">
-                            </a>
+                            {{ if .Site.Params.Avatar }}
+                                <a href="{{ .Site.BaseURL }}">
+                                    <img class="cyberpunk avatar-image" src="{{ relURL .Site.Params.Avatar }}" alt="{{ .Site.Title }}">
+                                </a>
+                            {{ end }}
                         </div>
 
                         <div class="col-md-8">
@@ -37,27 +38,22 @@
                         </div>
                     </div>
                 </div>
-            {{ end }}
 
-            {{ if .Site.Params.Avatar }}
-                <sec class="col-md-7 navigation-container">
-            {{ else }}
-                <div>
-            {{ end }}
-
-            {{ if isset .Site.Menus "main" }}
-                <div>
-                    <nav class="navigation">
-                        <ul>
-                            {{ range .Site.Menus.main }}
-                                <li>
-                                    <a class="cyberpunk2077" href="{{ .URL }}">{{ .Name }}</a>
-                                </li>
-                            {{ end }}
-                        </ul>
-                    </nav>
-                </div>
-            {{ end }}
+            <div class="col-md-7 navigation-container">
+                {{ if isset .Site.Menus "main" }}
+                    <div>
+                        <nav class="navigation">
+                            <ul>
+                                {{ range .Site.Menus.main }}
+                                    <li>
+                                        <a class="cyberpunk2077" href="{{ .URL }}">{{ .Name }}</a>
+                                    </li>
+                                {{ end }}
+                            </ul>
+                        </nav>
+                    </div>
+                {{ end }}
+            </div>
         </div>
     </section>
 </header>
