@@ -61,3 +61,15 @@ name = "About"
 url = "/about"
 weight = 2
 ```
+
+### Title, subtitle, avatar, footer text
+
+Example:
+```toml
+
+[params]
+	pagetitle = "Rogue Amendiares"
+	subtitle = "Night City's top fixer"
+	footertext = "Destroy Arasaka"
+	avatar = "/foo.jpg"
+```
